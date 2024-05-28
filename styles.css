@@ -1,0 +1,169 @@
+/* CSS */
+body {
+  background-color: #e7e7e8;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  margin: 0;
+}
+
+div.nav {
+  height: 8vh;
+  font-size: 6vh;
+  font-family: monospace;
+  font-weight: bold;
+  justify-content: center;
+  padding-left: 3%;
+  background-color: #2d2d2d;
+  color: #ffffff;
+  border-bottom: 2px solid #e6e6e6 ;
+}
+
+div.container {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+div.new {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: #f0f0f0;
+  width: 22rem;
+  height: 15rem;
+  border-radius: 5px;
+}
+
+div.current {
+  background-color: #f0f0f0;
+  width: 22rem;
+  height: 35rem;
+  border-radius: 5px;
+}
+
+div.todos {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+}
+
+form {
+  margin: 1em;
+  font-size: large;
+  display: flex;
+  gap: 5px;
+  flex-direction: column;
+  width: 90%;
+  align-items: center;
+}
+div.section {
+  width: 100%;
+  font-size: larger;
+  font-weight: bold;
+  color: #303030;
+}
+
+input {
+  width: 100%;
+  height: 3em;
+  border: none;
+  outline: none;
+}
+
+div.wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-radius: 5px;
+  padding: 2rem;
+  gap: 5px;
+  background-color: #f0f0f0;
+}
+
+div.todo {
+  height: 10rem;
+  width: 10rem;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.todo:hover {
+  background-color: #6e6e6e;
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.todo.clicked  {
+  background-color: #383838;
+  color: #d8d8d8;
+}
+.todo.clicked * {
+  color: #d8d8d8;
+}
+
+.todoTitle {
+  font-size: larger;
+  font-weight: bold;
+  color: #212121;
+  max-width: 90%;
+  max-height: 90%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow:hidden;
+
+  overflow-wrap: break-word;
+  text-align: center;
+}
+
+/* Define classes for each background color */
+
+.hidden {
+  display: none;
+}
+
+.color-0 {
+  background-color: #b5c0d0;
+}
+
+.color-1 {
+  background-color: #ccd3ca;
+}
+
+.color-2 {
+  background-color: #f5e8dd;
+}
+
+.color-3 {
+  background-color: #eed3d9;
+}
+
+.color-4 {
+  background-color: #e0d3ee;
+}
+
+/* CSS */
+.add-button {
+  width: 100%;
+  background-color: #e7e7e8;
+  border: none;
+  color: #0d172a;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1;
+  padding: 1rem 1.6rem;
+  text-align: center;
+  text-decoration: none #0d172a solid;
+  text-decoration-thickness: auto;
+  transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.add-button:hover {
+  background-color: #383838;
+  color: #fff;
+}

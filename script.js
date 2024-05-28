@@ -1,0 +1,78 @@
+document.addEventListener("DOMContentLoaded", () => {
+  const colors = ["color-0", "color-1", "color-2", "color-3", "color-4"];
+  const addButton = document.querySelector(".add-button");
+  const todoWrapper = document.querySelector(".wrapper");
+  const todosSection = document.querySelector(".todos");
+  const currentSection = document.querySelector(".current");
+
+  const toggleVisibility = () => {
+    if (todoWrapper.children.length === 0) {
+      todosSection.classList.add("hidden");
+      todoWrapper.classList.remove("wrapper");
+      todoWrapper.classList.add("hidden");
+      currentSection.classList.add("hidden");
+    } else {
+      todosSection.classList.remove("hidden");
+      todoWrapper.classList.remove("hidden");
+      todoWrapper.classList.add("wrapper");
+
+      currentSection.classList.remove("hidden");
+    }
+  };
+
+  const initializeTodo = (todo, index) => {
+    const colorIndex = index % colors.length;
+    todo.classList.add(colors[colorIndex]);
+
+    todo.addEventListener("click", () => {
+      document.querySelectorAll(".todo").forEach((t) => t.classList.remove("clicked"));
+      todo.classList.toggle("clicked");
+    });
+  };
+
+  const addNewTodo = () => {
+    const titleInput = document.getElementById("todo-title");
+    const descriptionInput = document.getElementById("todo-description");
+    const todos = document.querySelectorAll(".todo");
+
+
+    // Get the values from the form
+    const title = titleInput.value.trim();
+    const description = descriptionInput.value.trim();
+
+
+
+    // Create new todo element
+    const newTodo = document.createElement("div");
+    newTodo.classList.add("todo");
+
+    // Add title and description to the new todo
+    const todoTitle = document.createElement("div");
+
+    todoTitle.textContent = title;
+    if (title === "") {
+      todoTitle.textContent = todos.length+1
+    }
+    todoTitle.classList.add("todoTitle")
+    const todoDescription = document.createElement("p");
+    todoDescription.textContent = description;
+    newTodo.appendChild(todoTitle);
+    // newTodo.appendChild(todoDescription);
+
+    todoWrapper.appendChild(newTodo);
+    initializeTodo(newTodo, todos.length);
+
+    // Clear the form fields
+    titleInput.value = "";
+    descriptionInput.value = "";
+
+    toggleVisibility();
+  };
+
+  addButton.addEventListener("click", addNewTodo);
+
+  document.querySelectorAll(".todo").forEach(initializeTodo);
+
+  // Initial visibility check
+  toggleVisibility();
+});
