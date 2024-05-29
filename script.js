@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
       todoWrapper.classList.remove("wrapper");
       todoWrapper.classList.add("hidden");
 
+      currentSection.classList.remove("current");
       currentSection.classList.add("hidden");
     } else {
       todosSection.classList.remove("hidden");
@@ -24,6 +25,8 @@ document.addEventListener("DOMContentLoaded", () => {
       todoWrapper.classList.add("wrapper");
 
       currentSection.classList.remove("hidden");
+      currentSection.classList.add("current");
+
     }
   };
 

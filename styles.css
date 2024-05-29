@@ -3,9 +3,9 @@
   --main-offwhite-2: #f0f0f0;
 
   --main-dark-1: #2d2d2d;
+  --onepixel-border: 1px solid var(--main-dark-1);
 }
 
-/* CSS */
 body {
   background-color: var(--main-offwhite-1);
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
@@ -24,14 +24,17 @@ div.nav {
 }
 
 div.container {
-  
   margin: 2rem;
   display: flex;
   justify-content: center;
   gap: 2rem;
 
-  font-size: 6vh;
+  font-size: 35px;
   font-weight: bold;
+}
+
+div.title {
+  margin-left: 1em;
 }
 
 div.new {
@@ -41,27 +44,52 @@ div.new {
   background-color: var(--main-offwhite-2);
   width: 22rem;
   height: 15rem;
-  border: 1px solid var(--main-dark-1) ;
-
+  border: var(--onepixel-border);
 }
 
 div.current {
+  display: flex;
+  flex-direction: column;
   background-color: var(--main-offwhite-2);
   width: 30rem;
   height: 35rem;
-  border: 1px solid var(--main-dark-1) ;
-
+  border: var(--onepixel-border);
 }
 
-div.todos {
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  max-height: 82vh;
-  background-color: var(--main-offwhite-2);
-  border: 1px solid var(--main-dark-1) ;
+div.current-title{
 
+  height: 15%;
+  display: flex;
+  justify-content: center;
+}
+
+div.current-body {
+  height: 70%;
+  font-weight: normal;
+  font-size: large;
+  text-align: center;
+  overflow-y: hidden;
+}
+
+div.buttons {
+  margin-top: 5px;
+  display: flex;
+}
+
+button.action {
+  width: 50%;
+}
+
+
+button.action:hover {
+  background-color: var(--main-dark-1);
+  color: var(--main-offwhite-1);
+}
+button.action#delete {
+  border-right: 1px solid var(--main-dark-1);
+}
+button.action#delete:hover {
+  background-color: #ca1515;
 }
 
 form {
@@ -88,12 +116,25 @@ input {
   outline: none;
 }
 
+div.todos {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-height: 82vh;
+  background-color: var(--main-offwhite-2);
+  border: var(--onepixel-border);
+}
+
 div.wrapper {
   height: 100%;
   box-sizing: border-box;
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   padding: 2rem;
+  padding-top: 0.5rem;
+  padding-right: 1.5rem;
+
   gap: 5px;
   background-color: var(--main-offwhite-2);
   overflow-y: scroll;
@@ -123,14 +164,13 @@ div.todo {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid var(--main-dark-1) ;
+  border: var(--onepixel-border);
   font-size: 1.5rem;
-
 }
 
 .todo:hover {
   background-color: #6e6e6e;
-  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .todo.clicked {
   background-color: var(--main-dark-1);
@@ -185,7 +225,7 @@ div.todo {
 
 /* CSS */
 
-button{
+button {
   border: none;
   font-weight: 600;
   transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
@@ -196,17 +236,16 @@ button{
   cursor: pointer;
   display: inline-block;
   touch-action: manipulation;
+  background-color: var(--main-offwhite-1);
 
+  border-top: var(--onepixel-border);
+  border-bottom: var(--onepixel-border);
 }
-
 
 button.add-button {
   width: 100%;
-  border-top: 1px solid var(--main-dark-1) ;
-  border-bottom: 1px solid var(--main-dark-1) ;
 
-  background-color: var(--main-offwhite-1);
-  color:  var(--main-dark-1);
+  color: var(--main-dark-1);
 }
 
 button.add-button:hover {
