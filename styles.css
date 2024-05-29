@@ -1,6 +1,13 @@
+:root {
+  --main-offwhite-1: #e6e6e6;
+  --main-offwhite-2: #f0f0f0;
+
+  --main-dark-1: #2d2d2d;
+}
+
 /* CSS */
 body {
-  background-color: #e7e7e8;
+  background-color: var(--main-offwhite-1);
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   margin: 0;
 }
@@ -8,43 +15,53 @@ body {
 div.nav {
   height: 8vh;
   font-size: 6vh;
-  font-family: monospace;
   font-weight: bold;
   justify-content: center;
   padding-left: 3%;
-  background-color: #2d2d2d;
-  color: #ffffff;
-  border-bottom: 2px solid #e6e6e6 ;
+  background-color: var(--main-dark-1);
+  color: var(--main-offwhite-1);
+  border-bottom: 2px solid var(--main-offwhite-1);
 }
 
 div.container {
-  margin-top: 2rem;
+  
+  margin: 2rem;
   display: flex;
   justify-content: center;
   gap: 2rem;
+
+  font-size: 6vh;
+  font-weight: bold;
 }
 
 div.new {
   display: flex;
   align-items: center;
   flex-direction: column;
-  background-color: #f0f0f0;
+  background-color: var(--main-offwhite-2);
   width: 22rem;
   height: 15rem;
-  border-radius: 5px;
+  border: 1px solid var(--main-dark-1) ;
+
 }
 
 div.current {
-  background-color: #f0f0f0;
-  width: 22rem;
+  background-color: var(--main-offwhite-2);
+  width: 30rem;
   height: 35rem;
-  border-radius: 5px;
+  border: 1px solid var(--main-dark-1) ;
+
 }
 
 div.todos {
   box-sizing: border-box;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  max-height: 82vh;
+  background-color: var(--main-offwhite-2);
+  border: 1px solid var(--main-dark-1) ;
+
 }
 
 form {
@@ -60,57 +77,80 @@ div.section {
   width: 100%;
   font-size: larger;
   font-weight: bold;
-  color: #303030;
+  color: var(--main-dark-1);
 }
 
 input {
   width: 100%;
+  background-color: var(--main-offwhite-1);
   height: 3em;
   border: none;
   outline: none;
 }
 
 div.wrapper {
+  height: 100%;
+  box-sizing: border-box;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  border-radius: 5px;
+  grid-template-columns: repeat(1, 1fr);
   padding: 2rem;
   gap: 5px;
-  background-color: #f0f0f0;
+  background-color: var(--main-offwhite-2);
+  overflow-y: scroll;
+}
+
+div.wrapper::-webkit-scrollbar {
+  width: 10px;
+}
+
+div.wrapper::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+div.wrapper::-webkit-scrollbar-thumb {
+  background-color: var(--main-dark-1);
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+div.wrapper::-webkit-scrollbar-thumb:hover {
+  background-color: var(--main-dark-1);
 }
 
 div.todo {
-  height: 10rem;
-  width: 10rem;
-  border-radius: 5px;
+  height: 5rem;
+  width: 42rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  border: 1px solid var(--main-dark-1) ;
+  font-size: 1.5rem;
+
 }
 
 .todo:hover {
   background-color: #6e6e6e;
   transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.todo.clicked  {
-  background-color: #383838;
-  color: #d8d8d8;
+.todo.clicked {
+  background-color: var(--main-dark-1);
+  color: var(--main-offwhite-2);
 }
 .todo.clicked * {
-  color: #d8d8d8;
+  color: var(--main-offwhite-2);
 }
 
 .todoTitle {
   font-size: larger;
   font-weight: bold;
-  color: #212121;
+  color: var(--main-dark-1);
   max-width: 90%;
   max-height: 90%;
 
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow:hidden;
+  overflow: hidden;
 
   overflow-wrap: break-word;
   text-align: center;
@@ -120,6 +160,7 @@ div.todo {
 
 .hidden {
   display: none;
+  border: none;
 }
 
 .color-0 {
@@ -143,27 +184,32 @@ div.todo {
 }
 
 /* CSS */
-.add-button {
-  width: 100%;
-  background-color: #e7e7e8;
+
+button{
   border: none;
-  color: #0d172a;
+  font-weight: 600;
+  transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 1.1rem;
+  padding: 1rem 1.6rem;
+  line-height: 1;
+  text-align: center;
   cursor: pointer;
   display: inline-block;
-  font-size: 1.1rem;
-  font-weight: 600;
-  line-height: 1;
-  padding: 1rem 1.6rem;
-  text-align: center;
-  text-decoration: none #0d172a solid;
-  text-decoration-thickness: auto;
-  transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
-  user-select: none;
-  -webkit-user-select: none;
   touch-action: manipulation;
+
 }
 
-.add-button:hover {
-  background-color: #383838;
-  color: #fff;
+
+button.add-button {
+  width: 100%;
+  border-top: 1px solid var(--main-dark-1) ;
+  border-bottom: 1px solid var(--main-dark-1) ;
+
+  background-color: var(--main-offwhite-1);
+  color:  var(--main-dark-1);
+}
+
+button.add-button:hover {
+  background-color: var(--main-dark-1);
+  color: var(--main-offwhite-1);
 }

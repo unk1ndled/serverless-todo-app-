@@ -7,12 +7,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const toggleVisibility = () => {
     if (todoWrapper.children.length === 0) {
+
+      todosSection.classList.remove("todos");
       todosSection.classList.add("hidden");
+
       todoWrapper.classList.remove("wrapper");
       todoWrapper.classList.add("hidden");
+
       currentSection.classList.add("hidden");
     } else {
       todosSection.classList.remove("hidden");
+      todosSection.classList.add("todos");
+
+
       todoWrapper.classList.remove("hidden");
       todoWrapper.classList.add("wrapper");
 
@@ -35,18 +42,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const descriptionInput = document.getElementById("todo-description");
     const todos = document.querySelectorAll(".todo");
 
-
-    // Get the values from the form
     const title = titleInput.value.trim();
     const description = descriptionInput.value.trim();
 
-
-
-    // Create new todo element
     const newTodo = document.createElement("div");
     newTodo.classList.add("todo");
 
-    // Add title and description to the new todo
     const todoTitle = document.createElement("div");
 
     todoTitle.textContent = title;
@@ -57,12 +58,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const todoDescription = document.createElement("p");
     todoDescription.textContent = description;
     newTodo.appendChild(todoTitle);
-    // newTodo.appendChild(todoDescription);
 
     todoWrapper.appendChild(newTodo);
     initializeTodo(newTodo, todos.length);
 
-    // Clear the form fields
+    // reset
     titleInput.value = "";
     descriptionInput.value = "";
 
@@ -76,3 +76,4 @@ document.addEventListener("DOMContentLoaded", () => {
   // Initial visibility check
   toggleVisibility();
 });
+

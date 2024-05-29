@@ -1,32 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <div class="nav">get-it-done</div>
-  <div class="container">
-    <div class="new">
-      <form id="todo-form">
-        <div class="section">
-          <div>title</div>
-          <input id="todo-title" placeholder="short todo title" type="text" required/>
-        </div>
-        <div class="section">
-          <div>description</div>
-          <input id="todo-description" placeholder="todo description" type="text" />
-        </div>
-      </form>
-      <button class="add-button">add new todo</button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- nav -->
+    <div class="nav"></div>
+
+    <div class="container">
+      <!-- add a new todo  -->
+      <div class="new">
+        <form id="todo-form">
+          <div class="section">
+            <div>title</div>
+            <input
+              id="todo-title"
+              placeholder="short todo title"
+              type="text"
+              required
+            />
+          </div>
+          <div class="section">
+            <div>description</div>
+            <input
+              id="todo-description"
+              placeholder="todo description"
+              type="text"
+            />
+          </div>
+        </form>
+        <button class="add-button">add new todo</button>
+      </div>
+
+      <!-- todo list -->
+      <div class="todos">
+        <div>My todos</div>
+        <div class="wrapper"></div>
+      </div>
+      <!-- currently opened todo -->
+      <div class="current">current</div>
     </div>
-    <div class="todos">
-      <div class="wrapper"></div>
-    </div>
-    <div class="current">current</div>
-  </div>
-  <script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
