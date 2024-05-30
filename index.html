@@ -4,15 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>memoriser</title>
-    <script type ="module" src="script.js"></script>
-
+    <link rel="icon" type="image/x-icon" href="/images/asa.jpg" />
     <link rel="stylesheet" href="styles.css" />
   </head>
+
   <body>
     <!-- nav -->
     <div class="nav">
       <img class="asa" src="images/asa.jpg" />
-      's memoriser 
+      's memoriser
     </div>
 
     <div class="container">
@@ -47,15 +47,16 @@
       </div>
       <!-- currently opened todo -->
       <div class="current">
-        <div class="current-title">amine</div>
-        <div class="current-body">amine</div>
+        <div class="current-title" contenteditable="true"></div>
+        <div class="current-body" contenteditable="true"></div>
         <div class="buttons">
           <button class="action" id="delete">delete</button>
-          <button class="action" id="edit">edit</button>
+          <button class="action" id="edit">patch</button>
 
           <button class="action" id="complete">complete</button>
         </div>
       </div>
     </div>
+    <script type="module" src="script.js"></script>
   </body>
 </html>

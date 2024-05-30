@@ -49,7 +49,6 @@ export const postTodo = async (title, description) => {
     return responseData.id;
   } catch (error) {
     console.error("Error:", error);
-    document.getElementById("response").innerText = `Error: ${error.message}`;
   }
 };
 
@@ -111,5 +110,35 @@ export const completeTodo = async (id) => {
     const res = await response.json();
   } catch (error) {
     console.error("Error Completing todo:", error);
+  }
+};
+
+
+// PATCH
+export const patchTodo = async (id, title, description) => {
+  const task = {
+    title: title,
+    description: description,
+  };
+
+  try {
+    const response = await fetch(`${apiUrl}/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(task),
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const responseData = await response.json();
+    // Handle the updated todo item
+    console.log(responseData)
+    return responseData;
+  } catch (error) {
+    console.error("Error:", error);
   }
 };

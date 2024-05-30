@@ -4,6 +4,7 @@ import {
   getTodo,
   deleteTodo,
   completeTodo,
+  patchTodo,
 } from "./util.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -12,6 +13,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const addButton = document.querySelector(".add-button");
   const deleteButton = document.querySelector("#delete");
+  const updateButton = document.querySelector("#edit");
   const completeButton = document.querySelector("#complete");
 
   const todoWrapper = document.querySelector(".wrapper");
@@ -22,7 +24,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const currentBody = document.querySelector(".current-body");
 
   let todolist = new Array(0);
-  let current;
+  let current = null;
 
   const toggleVisibility = () => {
     if (todolist.length === 0) {
@@ -84,6 +86,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const refreshTodoList = () => {
     todoWrapper.innerHTML = "";
+    console.log(todolist)
     todolist
       .sort((t1, t2) => {
         if (t1.status == "unfinished" && t2.status == "completed") {
@@ -109,7 +112,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const description = descriptionInput.value.trim();
 
     if (title === "") {
-      title = todos.length + 1;
+      return;
     }
     const id = await postTodo(title, description);
     const next = await getTodo(id);
@@ -138,10 +141,11 @@ document.addEventListener("DOMContentLoaded", async () => {
   deleteButton.addEventListener("click", async () => {
     await deleteTodo(current.id);
     todolist.splice(current.index, 1);
+    current = null;
     currentBody.textContent = "";
     currentTitle.textContent = "";
     refreshTodoList();
-    toggleVisibility()
+    toggleVisibility();
   });
 
   completeButton.addEventListener("click", async () => {
@@ -151,7 +155,21 @@ document.addEventListener("DOMContentLoaded", async () => {
     const status = curdiv.getElementsByClassName("status")[0];
     if (status) {
       status.textContent = "✔";
+    }
+  });
 
+  updateButton.addEventListener("click", async () => {
+    if (current != null) {
+      await patchTodo(
+        current.id,
+        currentTitle.textContent,
+        currentBody.textContent
+      );
+
+      // alert(`updated todo ${currentTitle.textContent} `);
+      todolist[current.index].title = currentTitle.textContent;
+      todolist[current.index].body = currentBody.textContent;
+      refreshTodoList();
     }
   });
 
@@ -159,7 +177,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   // Initial visibility check
   todolist = await getTodos();
-  refreshTodoList()
+  refreshTodoList();
   toggleVisibility();
-
 });
