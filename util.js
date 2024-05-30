@@ -93,3 +93,23 @@ export const deleteTodo = async (id) => {
     console.error("Error Deleting todos:", error);
   }
 };
+
+
+//Put 
+export const completeTodo = async (id) => {
+  try {
+    const response = await fetch(`${apiUrl}/${id}`, {
+      method: "Put",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const res = await response.json();
+  } catch (error) {
+    console.error("Error Completing todo:", error);
+  }
+};
