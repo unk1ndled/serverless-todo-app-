@@ -3,12 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>memoriser</title>
+    <script type ="module" src="script.js"></script>
+
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <!-- nav -->
-    <div class="nav">memoriser</div>
+    <div class="nav">
+      <img class="asa" src="images/asa.png" />
+      memoriser 
+
+    </div>
 
     <div class="container">
       <!-- add a new todo  -->
@@ -18,7 +24,7 @@
             <div>title</div>
             <input
               id="todo-title"
-              placeholder="short todo title"
+              placeholder=" short todo title"
               type="text"
               required
             />
@@ -27,7 +33,7 @@
             <div>description</div>
             <input
               id="todo-description"
-              placeholder="todo description"
+              placeholder=" todo description"
               type="text"
             />
           </div>
@@ -43,13 +49,14 @@
       <!-- currently opened todo -->
       <div class="current">
         <div class="current-title">amine</div>
-        <div class="current-body">amine </div>
+        <div class="current-body">amine</div>
         <div class="buttons">
           <button class="action" id="delete">delete</button>
+          <button class="action" id="edit">edit</button>
+
           <button class="action" id="complete">complete</button>
         </div>
       </div>
     </div>
-    <script src="script.js"></script>
   </body>
 </html>
