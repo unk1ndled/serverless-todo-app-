@@ -82,6 +82,23 @@ document.addEventListener("DOMContentLoaded", async () => {
     initializeTodo(newTodo, index);
   };
 
+  const refreshTodoList = () => {
+    todoWrapper.innerHTML = "";
+    todolist
+      .sort((t1, t2) => {
+        if (t1.status == "unfinished" && t2.status == "completed") {
+          return -1;
+        } else if (t2.status == "unfinished" && t1.status == "completed") {
+          return 1;
+        } else {
+          return 0;
+        }
+      })
+      .map((todo, index) => {
+        showTodo(todo, index);
+      });
+  };
+
   //self explanatory tbh
   const addNewTodo = async () => {
     //
@@ -117,32 +134,32 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   //init buttons
   addButton.addEventListener("click", addNewTodo);
-  todolist = await getTodos();
 
   deleteButton.addEventListener("click", async () => {
     await deleteTodo(current.id);
     todolist.splice(current.index, 1);
-    todoWrapper.innerHTML = "";
-    todolist.map((todo, index) => {
-      showTodo(todo, index);
-    });
+    currentBody.textContent = "";
+    currentTitle.textContent = "";
+    refreshTodoList();
+    toggleVisibility()
   });
 
   completeButton.addEventListener("click", async () => {
     await completeTodo(current.id);
 
     const curdiv = document.querySelector(".clicked");
-    const status = curdiv.getElementsByClassName("status")[0]; 
-    if (status) { 
-        status.textContent = "✔";
+    const status = curdiv.getElementsByClassName("status")[0];
+    if (status) {
+      status.textContent = "✔";
+
     }
-});
-  todolist.map((todo, index) => {
-    showTodo(todo, index);
   });
 
   document.querySelectorAll(".todo").forEach(initializeTodo);
 
   // Initial visibility check
+  todolist = await getTodos();
+  refreshTodoList()
   toggleVisibility();
+
 });

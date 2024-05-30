@@ -163,6 +163,7 @@ input {
 }
 
 .todos {
+  min-width: 740.8px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
